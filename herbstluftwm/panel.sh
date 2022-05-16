@@ -188,5 +188,5 @@ hc pad $monitor $panel_height
 
 } 2> /dev/null | dzen2 -w $panel_width -x $x -y $y -fn "$font" -h $panel_height \
     -e "button3=;button4=exec:$hc_quoted use_index -1;button5=exec:$hc_quoted use_index +1" \
-	-ta l -bg "#525266" -fg '#efefef'
+	-ta l -bg "$(xrdb -query |grep \*.background:| cut -f2)" -fg "$(xrdb -query |grep \*.foreground:| cut -f2)"
 
