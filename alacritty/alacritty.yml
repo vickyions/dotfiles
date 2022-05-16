@@ -1,0 +1,64 @@
+colors:
+  # Default colors
+  primary:
+    background: '0x151515'
+    foreground: '0x888888'
+
+  # Normal colors
+  normal:
+    black:   '0x292929'
+    red:     '0xcf6a4c'
+    green:   '0x19cb00'
+    yellow:  '0xfad07a'
+    blue:    '0x8197bf'
+    magenta: '0x8787af'
+    cyan:    '0x668799'
+    white:   '0x888888'
+
+  # Bright colors
+  bright:
+    black:   '0x525252'
+    red:     '0xff9d80'
+    green:   '0x23fd00'
+    yellow:  '0xffefbf'
+    blue:    '0xaccaff'
+    magenta: '0xc4c4ff'
+    cyan:    '0x80bfaf'
+    white:   '0xe8e8d3'
+
+
+
+
+
+font:
+  size: 11
+  offset:
+    x: 0
+    y: 0
+  normal:
+    family: "Ubuntu Mono"
+
+window:
+  padding:
+    x: 0
+    y: 0
+
+cursor:
+  unfocused_hollow: true
+  style:
+    shape: Block
+    blinking: Always
+  blink_interval: 700
+
+env:
+  TERM: xterm-256color
+
+scrolling:
+  history: 2000
+  auto_scroll: true
+
+  dynamic_title: true
+
+  decorations: none
+
+  background_opacity: 0.6

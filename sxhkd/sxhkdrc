@@ -1,0 +1,78 @@
+#alt_R alt_L
+#
+#make sxhkd reload its configuration files
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+alt + {Return, z, w}
+	{alacritty, librewolf, nmcli d wifi hotspot ssid migi password bhanjebeta}
+
+alt + d
+	sh ~/.config/scripts/dmen.sh
+	#dmenu_run -fn "Ubuntu Mono:size=11" -nf green -sb purple -sf black
+
+#music video
+ctrl + alt + s
+	mpv --playlist=/home/migi/mpvSongs.m3u --shuffle --loop-playlist
+
+ctrl + alt + f
+	thunar
+
+#hibrid-sleep
+ctrl + shift + q
+	systemctl hybrid-sleep
+
+#betterlockscreen
+ctrl + q
+	betterlockscreen -l dim --off 15  -- --time-str="%d %a %I:%M %p" -p default --greeter-text="Guess the password?" --time-font="Ubuntu Mono" --time-size=30 --radius 20
+
+ctrl + alt + r
+	rofi -modi "drun,filebrowser,window"  -show drun
+
+#mpc control and playerctl
+XF86Audio{Next,Prev,Play}
+	mpc -q {next,prev,toggle}  && dunstify -r 12 -t 1000 "mpc" "$(mpc status)"
+
+ctrl + XF86Audio{Next,Prev,Play}
+	playerctl {next,previous,play-pause}  && dunstify -r 12 -t 1000 "playerctl" "$(playerctl metadata -f '{{status}} {{playerName}}: {{title}}')"
+
+
+#stop mpc to let playerctl work
+ctrl + F5
+	mpc -q stop && dunstify -r 12 -t 400 "mpc Stopped"
+
+ctrl + shift + F5
+	playerctl stop && dunstify -r 12 -t 400 "playerctl Stopped"
+
+#Volume settings
+XF86AudioMute
+	amixer set Master toggle && dunstify -r 11 -t 1000 Volume- Muted
+
+XF86AudioLowerVolume
+	amixer set Master 1%-,1%- && sh /home/migi/.config/scripts/volumenotify.sh
+
+XF86AudioRaiseVolume
+	amixer set Master 1%+,1%+ && sh /home/migi/.config/scripts/volumenotify.sh
+
+#brightness control
+XF86MonBrightness{Up,Down}
+	brillo -u 1500 -q{A,U} 2 && dunstify -r 10 -t 1000 Brightness- $(brillo)
+
+#fullscreen screenshot
+Print
+	screengrab
+#active window screenshot
+alt + Print
+	screengrab -a
+#region screenshot
+ctrl + Print
+	screengrab -r
+
+alt + k
+	xkill
+ctrl + k
+	pkill xkill
+
+#find files using locate and copy its location to xclip
+XF86Search
+	locate $(echo "find files using 'locate'"| dmenu -p stdIN) | dmenu -l 20 | xclip -selection clipboard
