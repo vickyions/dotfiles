@@ -212,10 +212,10 @@ done
 
 #autostart
 #sxhkd &
-sleep 5s
-stalonetray &
-mplayer "/usr/share/sounds/purple/login.wav" &
+sleep 2s
+stalonetray -bg "$(xrdb -query | grep \*.background: | cut -f2)" &
+#mplayer "/usr/share/sounds/purple/login.wav" &
 #mplayer -volume 80
-sleep 3s
-amixer set Master 40%,40% &
+#sleep 2s
+#amixer set Master 40%,40% &
 aw-qt &
