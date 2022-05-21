@@ -39,7 +39,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 "set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=$HOME/.vim/bundle/Vundle.vim
+set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 call vundle#begin('$HOME/.vim/bundle/')
@@ -73,9 +73,16 @@ Plugin 'luochen1990/rainbow'		  "rainbow brackets
 " Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mattn/emmet-vim'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+" javascript typescript cs less scss json graphql markdown vue svelte yaml html
+Plugin 'prettier/vim-prettier', {
+	\ 'do': 'yarn install --frozen-lockfile --production',
+	\ 'for': ['javascript', 'css', 'less', 'json', 'markdown', 'yaml', 'html'] }
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'KabbAmine/zeavim.vim'
 Plugin 'dylanaraps/wal.vim'
+Plugin 'dense-analysis/ale'
+"Plugin 'scrooloose/syntastic'
 "Plugin 'vim-airline/vim-airline'	  "statusline/tabline
 "Plugin 'godlygeek/tabular'			"aligning made easy and filtering
 " All of your Plugins must be added before the following line
@@ -99,4 +106,28 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "rainbow
 let g:rainbow_active = 1
 
+""sytastic settings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+"ale setting
+"let g:ale_linters = {
+"			\   '*': [],
+"			\}
+let g:ale_fixers = {
+			\	'*': ['remove_trailing_lines','trim_whitespace'],
+			\	'c': ['clang-format'],
+			\	'cpp': ['clang-format'],
+			\	'tex': ['latexindent'],
+			\	'html': ['prettier'],
+			\	'css': ['prettier'],
+			\}
+let g:ale_fix_on_save = 1
+"others
 colorscheme wal
