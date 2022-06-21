@@ -184,8 +184,11 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 #hc rule once tag=3 floating=on #tag 3 is set into floating
 hc rule class=Thunar floating_geometry=700x500 floating=on #thunar opens in floating 
-hc rule class=Zeal floating_geometry=1000x620 floating=on
-hc rule class=obs tag=9
+hc rule class="Zeal" floating_geometry=1000x620 floating=on
+hc rule class="obs" tag=9
+hc rule class="screengrab" floating_geometry=400x400 floating=on
+hc rule class="Slack" tag=8
+hc rule class="Thunderbird" tag=7
 
 hc set tree_style '╾│ ├└╼─┐'
 
@@ -198,24 +201,25 @@ hc unlock
 # hc detect_monitors
 
 # find the panel
-panel=~/.config/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(hc list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    "$panel" "$monitor" &
-done
+#panel=~/.config/herbstluftwm/panel.sh
+#[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+#for monitor in $(hc list_monitors | cut -d: -f1) ; do
+#    # start it on each monitor
+#    "$panel" "$monitor" &
+#done
 
 #Polybar launch script
-
-#sh $Home/.config/polybar/launch.sh
-
-
+sh $HOME/.config/polybar/launch.sh
+hc pad 0 15 0 0 0
+nitrogen --restore &
 #autostart
 #sxhkd &
-sleep 2s
-stalonetray -bg "$(xrdb -query | grep \*.background: | cut -f2)" &
+#stalonetray -bg "$(xrdb -query | grep \*.background: | cut -f2)" &
+#sleep 3s 
+#stalonetray &
 #mplayer "/usr/share/sounds/purple/login.wav" &
-#mplayer -volume 80
+##mplayer -volume 80
+#wal -R &
 #sleep 2s
-#amixer set Master 40%,40% &
-aw-qt &
+#amixer set Master 30%,30% &
+#aw-qt &
