@@ -8,7 +8,7 @@
 #export QT_FONT_DPI="98 vym"
 ##########
 
-zstyle ':completion:*' completer _complete _ignored
+#zstyle ':completion:*' completer _complete _ignored
 ##Autocompletion with an arrow-key driven interface with double tab, Also I think its working for the aliases too
 #while in arch wiki th option to activate it "setopt COMPLETE_ALIASES" makes it
 ##to not work I don't know check it when it behaves differently
@@ -16,6 +16,10 @@ zstyle ':completion:*' menu select
 zstyle :compinstall filename '/home/migi/.zshrc'
 #autorehashing (has performance effect, so just use rehash after adding new packages) of autocompletion for new packages "rehash"
 #zstyle ':completion:*' rehash true
+
+#pure prompt path#####
+fpath+=$HOME/.zsh/pure
+# #######
 
 autoload -Uz compinit promptinit
 compinit
@@ -26,9 +30,12 @@ promptinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 #######
 
-#prompt theme bart
-prompt spaceship
-
+prompt pure
+###pure single line prompt
+prompt_newline='%666v'
+PROMPT=" $PROMPT"
+###########
+#
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -72,7 +79,6 @@ LS_COLORS=$LS_COLORS:'di=1;35:ln=36:so=32:pi=33:ex=31:bd=34;47:cd=34;43:su=30;41
 
 #####Export
 export TERM=alacritty                                                   
-export RTV_BROWSER=surf
 export BROWSER=firefox
 export EDITOR=vim                         
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -99,13 +105,9 @@ alias jprompts='sh /home/migi/.config/scripts/journal/jprompts.sh'
 alias grayscale='sh /home/migi/.config/picom/grayscale.sh'
 alias sys='systemctl'
 alias todo='vim ~/todo'
-
-# Import the colors. pywal
-. "${HOME}/.cache/wal/colors.sh"
-# Create the alias.
-alias dmen='dmenu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
-
-alias walupdate='sh ${HOME}/.config/scripts/walupdate.sh'
+##markdown to pdf
+alias mdpandoc='pandoc /home/migi/.config/scripts/template.yaml '
+#alias walupdate='sh ${HOME}/.config/scripts/walupdate.sh'
 #Live web development using browser-syn from npm
 alias serve="browser-sync start --server --files ."
 ##############Alias End#############
@@ -158,45 +160,3 @@ function xterm_title_precmd () {
 setopt histignorespace
 
 
-#spaceship prompt
-#
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=false
-SPACESHIP_PROMPT_PREFIXES_SHOW=true
-SPACESHIP_PROMPT_SUFFIXES_SHOW=true
-SPACESHIP_PROMPT_DEFAULT_PREFIX='via '
-SPACESHIP_PROMPT_DEFAULT_SUFFIX=' '
-
-#Char
-SPACESHIP_CHAR_PREFIX='' #Prefix before prompt character
-SPACESHIP_CHAR_SUFFIX=' '
-SPACESHIP_CHAR_SYMBOL='➜' #➜  >       Prompt character to be shown before any command
-SPACESHIP_CHAR_COLOR_SUCCESS='green'
-SPACESHIP_CHAR_COLOR_FAILURE='red'
-SPACESHIP_CHAR_COLOR_SECONDARY='yellow'
-
-#Time
-SPACESHIP_TIME_SHOW=false
-SPACESHIP_TIME_PREFIX='at'
-SPACESHIP_TIME_COLOR='yellow'
-SPACESHIP_TIME_FORMAT=false #Custom date formatting ZSH date formats
-SPACESHIP_TIME_12HR=false
-
-#package veersion support npm cargo
-SPACESHIP_PACKAGE_SHOW=false
-
-#Node.js
-SPACESHIP_NODE_SHOW=true
-
-# Import colorscheme from 'wal' asynchronously
-# # &   # Run the process in the background.
-# # ( ) # Hide shell job control messages.
-# # Not supported in the "fish" shell.
-(cat ~/.cache/wal/sequences &)
-#
-# # Alternative (blocks terminal for 0-3ms)
-cat ~/.cache/wal/sequences
-#
-# # To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
