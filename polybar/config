@@ -27,6 +27,27 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+[bar/mid]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 35%
+height = 15
+fixed-center = true
+background = #FFF
+foreground = #000
+border-size = 0
+radius = 4.0
+overide-redirect = true
+font-0 = "Ubuntu Mono:size=10;1"
+modules-center = xwindow
+dim-value = 1.0
+offset-x = 32.5%
+dpi-x = 96
+dpi-y = 96
+enable-ipc = false
+padding = 0
+line-size = 1
+
+
 [bar/herbs]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
@@ -76,7 +97,7 @@ font-4 = siji:pixelsize=10;1
 
 modules-left = info-hlwm-workspaces 
 modules-center = xwindow
-modules-right = cpu temperature xkeyboard battery wlan eth date powermenu
+modules-right = xkeyboard battery wlan eth date
 
 ;The separator will be inserted between the output of each module
 ; This has the same properties as a label
@@ -111,7 +132,7 @@ tray-maxsize = 16
 tray-offset-x = 0
 tray-offset-y = 0
 ; Pad the sides of each tray icon
-tray-padding = 0
+tray-padding = 5
 ;scale factor for tray clients
 tray-scale = 1.0
 ;Set a DPI values used when rendering text
@@ -498,7 +519,7 @@ full-at = 98
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
