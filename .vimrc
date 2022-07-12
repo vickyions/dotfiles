@@ -1,41 +1,42 @@
-set nocompatible	" Use Vim settings, rather than Vi settings
-set softtabstop=2	" Indent by 2 spaces when hitting tab
-set shiftwidth=2	" Indent by 4 spaces when auto-indenting
-set tabstop=2		" Show existing tab with 4 spaces width
-syntax on			" Enable syntax highlighting
-"filetype indent on	" Enable indenting for files
+set nocompatible  " Use Vim settings, rather than Vi settings
+set softtabstop=2 " Indent by 2 spaces when hitting tab
+set shiftwidth=2  " Indent by 4 spaces when auto-indenting
+set tabstop=2   " Show existing tab with 4 spaces width
+syntax on     " Enable syntax highlighting
+"filetype indent on " Enable indenting for files
 "set paste "avoids indentations while pasting
-"set autoindent		" Enable auto indentingi from previous lines
+"set autoindent   " Enable auto indentingi from previous lines
 set smartindent
 "set cindent
-set number			" Enable Line numbers
-set relativenumber	" Enbales relative numbers if numbers are enable
-colorscheme gruvbox		" Set nice looking colorschemes
-set laststatus=2	" Show status line
+set number      " Enable Line numbers
+"set relativenumber  " Enbales relative numbers if numbers are enable
+colorscheme gruvbox   " Set nice looking colorschemes
+set laststatus=2  " Show status line
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %P
-set wildmenu		" Display command line's tab complete options as a menu
+set wildmenu    " Display command line's tab complete options as a menu
 " Swap file management
-" set noswapfile
-set directory=$HOME/.vim/swp//
+set noswapfile
+"set directory=$HOME/.vim/swp//
 "
 " Backup file management
-" set nobackup
+"set nobackup
 set backupdir=$HOME/.vim/.backup//
 "
-set history=1000	" Bigger history of executed commands
-set showcmd			" Show incomplete commands at the bottom
-set showmode		" current mode at bottom
-set ruler			" always show cursor position
-"set cursorline		" Highlight the line currently under cursor
+set history=1000  " Bigger history of executed commands
+set showcmd     " Show incomplete commands at the bottom
+set showmode    " current mode at bottom
+set ruler     " always show cursor position
+set cursorline   " Highlight the line currently under cursor
+"set cursorcolumn
 "au Colorscheme * hi CursorLine cterm=NONE ctermbg=235
-set mouse=a			" Enable mouse for scrolling and resizing
-set background=dark	" Use colors that suit a dark background
-set title			" set window title reflecting the file currently being edited in format of FILENAME(PATH) - VIM
-"set nowrap			" Don't wrap lines
-set linebreak		" Wrap lines at convenient points avoid wrapping line in the middle of a word
-"set spell			" Spell checking
-set spelllang=en	" Spell checking language
-set visualbell		" Flash the screen instead of beeping on errors
+set mouse=a     " Enable mouse for scrolling and resizing
+set background=dark " Use colors that suit a dark background
+set title     " set window title reflecting the file currently being edited in format of FILENAME(PATH) - VIM
+"set nowrap     " Don't wrap lines
+set linebreak   " Wrap lines at convenient points avoid wrapping line in the middle of a word
+"set spell      " Spell checking
+set spelllang=en  " Spell checking language
+set visualbell    " Flash the screen instead of beeping on errors
 
 filetype off                  " required
 
@@ -77,12 +78,12 @@ Plugin 'VundleVim/Vundle.vim'
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-Plugin 'ycm-core/YouCompleteMe'	"autocompletion
-Plugin 'Yggdroot/indentLine'		"indentation lines
-Plugin 'preservim/nerdtree'		  "Nerdtree
-"Plugin 'tpope/vim-surround'		  "managing quote pairs and replacing and advance stuff :help surround
-Plugin 'raimondi/delimitmate'	  "auto pairing of quotes brackets etc
-Plugin 'luochen1990/rainbow'		  "rainbow brackets
+Plugin 'ycm-core/YouCompleteMe' "autocompletion
+Plugin 'Yggdroot/indentLine'    "indentation lines
+Plugin 'preservim/nerdtree'     "Nerdtree
+"Plugin 'tpope/vim-surround'      "managing quote pairs and replacing and advance stuff :help surround
+Plugin 'raimondi/delimitmate'   "auto pairing of quotes brackets etc
+Plugin 'luochen1990/rainbow'      "rainbow brackets
 " Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mattn/emmet-vim'
@@ -90,15 +91,15 @@ Plugin 'sheerun/vim-polyglot'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 " javascript typescript cs less scss json graphql markdown vue svelte yaml html
 Plugin 'prettier/vim-prettier', {
-	\ 'do': 'yarn install --frozen-lockfile --production',
-	\ 'for': ['javascript', 'css', 'less', 'json', 'markdown', 'yaml', 'html'] }
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'css', 'less', 'json', 'markdown', 'yaml', 'html'] }
 "Plugin 'arcticicestudio/nord-vim'
 Plugin 'KabbAmine/zeavim.vim'
 "Plugin 'dylanaraps/wal.vim'
 Plugin 'dense-analysis/ale'
 "Plugin 'scrooloose/syntastic'
-"Plugin 'vim-airline/vim-airline'	  "statusline/tabline
-"Plugin 'godlygeek/tabular'			"aligning made easy and filtering
+"Plugin 'vim-airline/vim-airline'   "statusline/tabline
+"Plugin 'godlygeek/tabular'     "aligning made easy and filtering
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "filetype plugin indent on    " required
@@ -141,21 +142,21 @@ let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 "ale setting
 let g:ale_linters = {
-			\	'html': ['vscode-html-language-server','prettier'],
-			\	'css': ['vscode-css-language-server','prettier'],
-			\	'json': ['vscode-json-language-server','prettier'],
-			\	'js': ['vscode-eslint-language-server','eslint'],
-			\}
+      \ 'html': ['vscode-html-language-server','prettier'],
+      \ 'css': ['vscode-css-language-server','prettier'],
+      \ 'json': ['vscode-json-language-server','prettier'],
+      \ 'js': ['vscode-eslint-language-server','eslint'],
+      \}
 let g:ale_fixers = {
-			\	'*': ['remove_trailing_lines','trim_whitespace'],
-			\	'c': ['clang-format'],
-			\	'cpp': ['clang-format'],
-			\	'tex': ['latexindent'],
-			\	'html': ['vscode-html-language-server','prettier'],
-			\	'css': ['vscode-css-language-server','prettier'],
-			\	'js': ['vscode-eslint-language-server','eslint'],
-			\	'json': ['vscode-json-language-server','prettier'],
-			\}
+      \ '*': ['remove_trailing_lines','trim_whitespace'],
+      \ 'c': ['clang-format'],
+      \ 'cpp': ['clang-format'],
+      \ 'tex': ['latexindent'],
+      \ 'html': ['vscode-html-language-server','prettier'],
+      \ 'css': ['vscode-css-language-server','prettier'],
+      \ 'js': ['vscode-eslint-language-server','eslint'],
+      \ 'json': ['vscode-json-language-server','prettier'],
+      \}
 let g:ale_enabled = 1
 "let g:ale_fix_on_save = 1
 "others
