@@ -1,0 +1,5 @@
+@-mox-document url("about:newtab") {
+  body[lwt-newtab-brighttext] {
+    --newtab-background-color-secondary: rgb(37,37,37) !important;
+  }
+}
