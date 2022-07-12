@@ -1,0 +1,11 @@
+---
+title: "Vicky's JavaScript Notes"
+author: "Vicky Soni"
+header-includes:
+- \usepackage[left=2.0cm,right=1.5cm,top=1.91cm,bottom=1.91cm]{geometry}
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyfoot[LE,RO]{Vicky Soni}
+output:
+  pdf_document
+---
