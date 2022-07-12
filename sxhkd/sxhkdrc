@@ -5,11 +5,11 @@ alt + Escape
 	pkill -USR1 -x sxhkd
 
 alt + {Return, z, w}
-	{alacritty, librewolf, nmcli d wifi hotspot ssid migi password bhanjebeta}
+	{alacritty, chromium, nmcli d wifi hotspot ssid migi password bhanjebeta}
 
 alt + d
-	sh ~/.config/scripts/dmen.sh
-	#dmenu_run -fn "Ubuntu Mono:size=11" -nf green -sb purple -sf black
+	dmenu_run -fn "Ubuntu Mono:size=11" -nf green -sb purple -sf black
+	#sh ~/.config/scripts/dmen.sh
 
 #music video
 ctrl + alt + s
@@ -36,6 +36,9 @@ XF86Audio{Next,Prev,Play}
 ctrl + XF86Audio{Next,Prev,Play}
 	playerctl {next,previous,play-pause}  && dunstify -r 12 -t 1000 "playerctl" "$(playerctl metadata -f '{{status}} {{playerName}}: {{title}}')"
 
+#setting default microphone volume
+ctrl + shift + F7
+	pactl set-source-port alsa_input.pci-0000_00_1f.3.analog-stereo analog-input-headset-mic && pactl set-source-volume alsa_input.pci-0000_00_1f.3.analog-stereo 57%
 
 #stop mpc to let playerctl work
 ctrl + F5
@@ -54,7 +57,7 @@ XF86Audio{LowerVolume,RaiseVolume}
 
 #brightness control
 XF86MonBrightness{Up,Down}
-	brillo -u 1500 -q{A,U} 2 && dunstify -r 10 -t 1000 Brightness- $(brillo)
+	brillo -u 1500 -p{A,U} 2 && dunstify -r 10 -t 1000 Brightness- $(brillo)
 
 #fullscreen screenshot
 Print
