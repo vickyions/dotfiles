@@ -6,7 +6,7 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 #####Loading .Xresources settings
-#xrdb -merge ~/.Xresources
+xrdb -merge ~/.Xresources
 
 ####qbittorent and QT5 HiDPI fix
 #export QT_FONT_DPI = 96 vym
@@ -17,16 +17,18 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 sxhkd &
 dunst &
 #stalonetray &
-picom --experimental-backend &
+xfce4-power-manager &
+#picom --experimental-backend &
+picom &
 #calcurse --daemon &
 #udiskie -as &
-nm-applet &
-cbatticon &
+#nm-applet &
+#cbatticon &
 xfce4-clipman &
 #blueman-applet &
 thunar --daemon &
 #riseup-vpn &
-buckle -g 45 &
+#buckle -g 45 &
 #keepassxc &
 #nitrogen --restore &
 #birdtray &
@@ -39,13 +41,14 @@ buckle -g 45 &
 #kdeconnect-indicator &
 #syncthing-gtk -m &
 #telegram-desktop &
-captstatusui -P LBP2900B -e &
-playerctld daemon &
+#captstatusui -P LBP2900B -e &
+#playerctld daemon &
 #activity Watch
-zeal &
+#slack &
+#zeal &
 #aw-qt &
 #conky | while read -r; do xsetroot -name "$REPLY"; done &
-wal -R
+#wal -R &
 sh /home/migi/.conky/test/conky_slate.sh &
 exec herbstluftwm
 
@@ -53,22 +56,6 @@ exec herbstluftwm
 #start with command- xinit (session) 
 #or - satrtx ~/.xinitrc (session)
 #exec dwm
-
-#session=${1:-dwm}
-#
-#case $session in
-#	xfce|xfce4		) exec startxfce4;;
-#	budgie			) exec budgie-desktop;;
-#	openbox			) exec openbox-session;;
-#       dwm			) exec dwm;;
-#	herbstluftwm|hlwm	) exec herbstluftwm;;
-#	bspwm			) exec bspwm;;
-#	flwm			) exec flwm;;
-#	fvwm			) exec fvwm;;
-#	#No known session, try to run it as command
-#	*			) exec $1;;
-#esac
-
 
 #merge in defaults and keymaps
 
