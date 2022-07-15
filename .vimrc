@@ -37,7 +37,8 @@ set linebreak   " Wrap lines at convenient points avoid wrapping line in the mid
 "set spell      " Spell checking
 set spelllang=en  " Spell checking language
 set visualbell    " Flash the screen instead of beeping on errors
-
+set scrolloff=8
+set colorcolumn=80
 filetype off                  " required
 
 "vim-polyglot
@@ -45,7 +46,7 @@ let g:polyglot_disabled = ['autoindent']
 let g:polyglot_disabled = ['ftdetect']
 "markdown conceal disabled
 let g:vim_markdown_conceal = 0
-let g:tex_conceal = ""
+let g:tex_conceal = ''
 let g:vim_markdown_math = 1
 let g:vim_markdown_conceal_code_blocks = 0
 
