@@ -52,7 +52,6 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['javascript', 'css', 'less', 'json', 'markdown', 'yaml', 'html'] }
 Plug 'dense-analysis/ale'
-Plug 'luochen1990/rainbow'
 call plug#end()
 
 let g:gruvbox_contrast_dark='medium'
@@ -111,9 +110,6 @@ let g:ale_fixers = {
       \}
 let g:ale_enabled = 1
 "let g:ale_fix_on_save = 1
-"
-"rainbow
-let g:rainbow_active = 1
 
 
 "vim-plug plugin manager
