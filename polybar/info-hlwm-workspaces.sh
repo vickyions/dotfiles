@@ -22,6 +22,7 @@ herbstclient --idle "tag_*" 2>/dev/null | {
                     '!')
                         # ! the tag contains an urgent window
                         # TODO Add your formatting tags for workspaces with the urgent hint
+                        echo "%{F#FABD2F}%{B#F44336}"
                         ;;
                     '-')
                         # - the tag is viewed on a monitor that is not focused

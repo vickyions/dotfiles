@@ -53,6 +53,7 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'css', 'less', 'json', 'markdown', 'yaml', 'html'] }
 Plug 'dense-analysis/ale'
 Plug 'luochen1990/rainbow'
+"Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 let g:gruvbox_contrast_dark='medium'
