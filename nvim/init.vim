@@ -1,4 +1,4 @@
-set autoindent "autoindent
+"set autoindent "autoindent
 set smartindent
 
 set autoread
@@ -63,6 +63,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'sainnhe/gruvbox-material'
 Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -102,3 +103,60 @@ let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 "cursor shape only the insert mode is changed to block others are default
 set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor2
+
+
+"vim coc config
+"""""""""""""""""""""
+"Use <cr> to confirm completion
+inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+"" use <tab> for trigger completion and navigate to the next complete item
+"function! CheckBackspace() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+"
+"inoremap <silent><expr> <Tab>
+"      \ coc#pum#visible() ? coc#pum#next(1) :
+"      \ CheckBackspace() ? "\<Tab>" :
+"      \ coc#refresh()
+"
+"from example config on github coc.nvim
+"set nobackup
+set updatetime=300
+set signcolumn=yes
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+"Prettier coc-Prettier
+nmap <leader>p :CocCommand prettier.formatFile<CR>
+
+"""""""""""""""""""""
+
