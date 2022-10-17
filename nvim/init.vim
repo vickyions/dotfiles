@@ -1,4 +1,4 @@
-"set autoindent "autoindent
+set autoindent "autoindent
 set smartindent
 
 set autoread
@@ -64,6 +64,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
