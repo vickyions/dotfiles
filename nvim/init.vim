@@ -47,6 +47,8 @@ set linebreak
 set scrolloff=8
 set colorcolumn=80
 
+set termguicolors
+
 filetype off
 
 "vim-polyglot
@@ -60,11 +62,14 @@ Plug 'raimondi/delimitmate'
 Plug 'luochen1990/rainbow'
 Plug 'Yggdroot/indentLine'
 "Plug 'morhetz/gruvbox'
+Plug 'mattn/emmet-vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
+Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -161,3 +166,37 @@ nmap <leader>p :CocCommand prettier.formatFile<CR>
 
 """""""""""""""""""""
 
+"""""hexokinase
+" Neovim default
+let g:Hexokinase_highlighters = [ 'virtual' ]
+
+" All possible highlighters
+"let g:Hexokinase_highlighters = [
+"\   'virtual',
+"\   'sign_column',
+"\   'background',
+"\   'backgroundfull',
+"\   'foreground',
+"\   'foregroundfull'
+"\ ]
+"
+" All possible values
+let g:Hexokinase_optInPatterns = [
+\     'full_hex',
+\     'triple_hex',
+\     'rgb',
+\     'rgba',
+\     'hsl',
+\     'hsla',
+\     'colour_names'
+\ ]
+
+" Filetype specific patterns to match
+" entry value must be comma seperated list
+let g:Hexokinase_ftOptInPatterns = {
+\     'css': 'full_hex,rgb,rgba,hsl,hsla,colour_names',
+\     'html': 'full_hex,rgb,rgba,hsl,hsla,colour_names'
+\ }
+
+" Sample value, to keep default behaviour don't define this variable
+"let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
