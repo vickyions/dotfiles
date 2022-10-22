@@ -1,4 +1,5 @@
 set autoindent "autoindent
+
 set smartindent
 
 set autoread
@@ -70,6 +71,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'css', 'less', 'json', 'markdown', 'yaml', 'html'] }
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -162,7 +166,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 "Prettier coc-Prettier
-nmap <leader>p :CocCommand prettier.formatFile<CR>
+"nmap <leader>p :CocCommand prettier.formatFile<CR>
 
 """""""""""""""""""""
 

@@ -12,8 +12,10 @@
 ##Autocompletion with an arrow-key driven interface with double tab, Also I think its working for the aliases too
 #while in arch wiki th option to activate it "setopt COMPLETE_ALIASES" makes it
 ##to not work I don't know check it when it behaves differently
+#
 zstyle ':completion:*' menu select
 zstyle :compinstall filename '/home/migi/.zshrc'
+#
 #autorehashing (has performance effect, so just use rehash after adding new packages) of autocompletion for new packages "rehash"
 #zstyle ':completion:*' rehash true
 
@@ -50,7 +52,7 @@ export PATH="$PATH:/home/migi/.local/bin"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #pkgfile "command not found" handler
-source /usr/share/doc/pkgfile/command-not-found.zsh
+#source /usr/share/doc/pkgfile/command-not-found.zsh
 #####
 MOZ_ALLOW_DOWNGRADE=1
 VBOX_USB=usbfs
@@ -65,20 +67,20 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 #########less for man for coloured output######
 man() {
-	    LESS_TERMCAP_md=$'\e[01;31m' \
-            LESS_TERMCAP_me=$'\e[0m' \
-            LESS_TERMCAP_se=$'\e[0m' \
-            LESS_TERMCAP_so=$'\e[01;44;33m' \
-	    LESS_TERMCAP_ue=$'\e[0m' \
-	    LESS_TERMCAP_us=$'\e[01;32m' \
-	    command man "$@"
+		LESS_TERMCAP_md=$'\e[01;31m' \
+			LESS_TERMCAP_me=$'\e[0m' \
+			LESS_TERMCAP_se=$'\e[0m' \
+			LESS_TERMCAP_so=$'\e[01;44;33m' \
+		LESS_TERMCAP_ue=$'\e[0m' \
+		LESS_TERMCAP_us=$'\e[01;32m' \
+		command man "$@"
 	}
 #########
 LS_COLORS=$LS_COLORS:'di=1;35:ln=36:so=32:pi=33:ex=31:bd=34;47:cd=34;43:su=30;41:sg=30;45:tw=30;42:ow=30;43' ; export LS_COLORS
 #########
 
-#####Export
-export TERM=alacritty                                                   
+####Export
+export TERMINAL=alacritty                                                   
 export BROWSER=chromium
 export EDITOR=vim                         
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -95,7 +97,9 @@ alias rm='rm -i'
 alias mkdir='mkdir -p -v'
 alias cp='cp -i'
 alias mv='mv -i'
-alias vi='vim'
+alias vi='command vim'
+alias vim='nvim'
+alias v='nvim'
 alias diff='colordiff'
 alias openports='ss --all --numeric --processes --ipv4 --ipv6'
 alias grep='grep --color=auto'
@@ -105,6 +109,7 @@ alias jprompts='sh /home/migi/.config/scripts/journal/jprompts.sh'
 alias grayscale='sh /home/migi/.config/picom/grayscale.sh'
 alias sys='systemctl'
 alias todo='vim ~/todo'
+alias scratch='vim ~/scratchpad'
 ##markdown to pdf
 alias mdpandoc='pandoc /home/migi/.config/scripts/template.yaml '
 #alias walupdate='sh ${HOME}/.config/scripts/walupdate.sh'
@@ -160,3 +165,4 @@ function xterm_title_precmd () {
 setopt histignorespace
 
 
+source /usr/share/nvm/init-nvm.sh

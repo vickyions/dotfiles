@@ -10,11 +10,11 @@ alias ums='/opt/ums/UMS.sh'
 PS1='[\u:\W]\$ '
 VBOX_USB=usbfs
 
-export TERM=alacritty                                                   
-export RTV_BROWSER=librewolf
-export BROWSER=firefox
-export EDITOR=vim                         
-export QT_QPA_PLATFORMTHEME=qt5ct
+#export TERM=alacritty                                                   
+#export RTV_BROWSER=librewolf
+#export BROWSER=firefox
+#export EDITOR=vim                         
+#export QT_QPA_PLATFORMTHEME=qt5ct
 
 #Alias
 #alias sudo='doas'
@@ -66,3 +66,4 @@ man() {
 #########
 LS_COLORS=$LS_COLORS:'di=1;35:ln=36:so=32:pi=33:ex=31:bd=34;47:cd=34;43:su=30;41:sg=30;45:tw=30;42:ow=30;43' ; export LS_COLORS
 #########
+source /usr/share/nvm/init-nvm.sh

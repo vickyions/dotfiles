@@ -8,9 +8,19 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 #####Loading .Xresources settings
 xrdb -merge ~/.Xresources
 
+###slow gtk application start
+###https://bbs.archlinux.org/viewtopic.php?id=224787
+###https://github.com/flatpak/xdg-desktop-portal-gtk/issues/72
+dbus-up/date-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 ####qbittorent and QT5 HiDPI fix
 #export QT_FONT_DPI = 96 vym
 ######
+#defaults
+export TERM=alacritty
+export BROWSER=firefox
+export EDITOR=vim
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 
 #Autostart
 #xbindkeys &
@@ -49,6 +59,7 @@ thunar --daemon &
 #aw-qt &
 #conky | while read -r; do xsetroot -name "$REPLY"; done &
 #wal -R &
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 sh /home/migi/.conky/test/conky_slate.sh &
 exec herbstluftwm
 

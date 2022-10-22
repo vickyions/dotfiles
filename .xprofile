@@ -1,0 +1,5 @@
+##slow gtk application start
+##https://bbs.archlinux.org/viewtopic.php?id=224787
+##https://github.com/flatpak/xdg-desktop-portal-gtk/issues/72
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
