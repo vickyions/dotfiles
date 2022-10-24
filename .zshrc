@@ -81,7 +81,6 @@ LS_COLORS=$LS_COLORS:'di=1;35:ln=36:so=32:pi=33:ex=31:bd=34;47:cd=34;43:su=30;41
 
 ####Export
 export TERMINAL=alacritty                                                   
-export TERM = alacritty
 export BROWSER=firefox
 export EDITOR=vim                         
 export QT_QPA_PLATFORMTHEME=qt5ct
