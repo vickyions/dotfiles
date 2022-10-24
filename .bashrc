@@ -7,10 +7,14 @@
 
 PS1='[\W]\$ '
 
+export TERM = alacritty
+export BROWSER = firefox
+export EDITOR = vim
+
 VBOX_USB=usbfs
 
 #auto cd when its a path
-shopt -s autocd
+#shopt -s autocd
 
 ##Commmand completion
 #bash-completiton
@@ -32,7 +36,7 @@ export HISTSIZE=1000
 ###
 
 ##cmd not found msg help
-source /usr/share/doc/pkgfile/command-not-found.bash
+#source /usr/share/doc/pkgfile/command-not-found.bash
 
 ###nvm
 source /usr/share/nvm/init-nvm.sh
@@ -42,5 +46,5 @@ source /usr/share/nvm/init-nvm.sh
 eval "$(zoxide init bash)"
 
 ###using ble.sh
-source ~/.local/share/blesh/ble.sh
+#source ~/.local/share/blesh/ble.sh
 set -o vi
