@@ -7,9 +7,9 @@
 
 PS1='[\W]\$ '
 
-export TERM = alacritty
-export BROWSER = firefox
-export EDITOR = vim
+export TERM=alacritty
+export BROWSER=firefox
+export EDITOR=vim
 
 VBOX_USB=usbfs
 
