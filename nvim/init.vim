@@ -205,3 +205,10 @@ let g:Hexokinase_ftOptInPatterns = {
 
 " Sample value, to keep default behaviour don't define this variable
 "let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
+"
+"markdown conceal disabled
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ''
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
+"
