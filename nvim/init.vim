@@ -45,6 +45,7 @@ set title
 set linebreak
 "set spell
 
+set mouse=
 set scrolloff=8
 set colorcolumn=80
 
