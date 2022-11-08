@@ -86,6 +86,7 @@ export EDITOR=vim
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 #########Alias
+alias migi_zoro_cluster_mongodb='mongosh "mongodb+srv://zoro.xttamr6.mongodb.net/mydb" --apiVersion 1 --username migi --password $zoro_cluster_pass'
 #alias ls='ls -C --color=auto'
 alias ls='exa --icons'
 alias ums='/opt/ums/UMS.sh'

@@ -51,7 +51,7 @@ thunar --daemon &
 #kdeconnect-indicator &
 #syncthing-gtk -m &
 #telegram-desktop &
-#captstatusui -P LBP2900B -e &
+captstatusui -P LBP2900B -e &
 #playerctld daemon &
 #activity Watch
 #slack &

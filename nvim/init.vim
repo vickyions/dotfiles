@@ -63,6 +63,8 @@ Plug 'tpope/vim-surround'
 Plug 'raimondi/delimitmate'
 Plug 'luochen1990/rainbow'
 Plug 'Yggdroot/indentLine'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 "Plug 'morhetz/gruvbox'
 Plug 'mattn/emmet-vim'
 Plug 'sainnhe/gruvbox-material'
@@ -212,3 +214,8 @@ let g:tex_conceal = ''
 let g:vim_markdown_math = 1
 let g:vim_markdown_conceal_code_blocks = 0
 "
+"
+"nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
