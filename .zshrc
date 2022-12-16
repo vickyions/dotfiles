@@ -100,7 +100,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias vi='command vim'
 alias vim='nvim'
-alias v='nvim'
+alias v='nvim -u /home/migi/.config/nvim/lite.init.vim'
 alias diff='colordiff'
 alias openports='ss --all --numeric --processes --ipv4 --ipv6'
 alias grep='grep --color=auto'
@@ -116,6 +116,15 @@ alias mdpandoc='pandoc /home/migi/.config/scripts/template.yaml '
 #alias walupdate='sh ${HOME}/.config/scripts/walupdate.sh'
 #Live web development using browser-syn from npm
 alias serve="browser-sync start --server --files ."
+
+#git aliases
+alias gl="git log"
+alias s="git status"
+alias gb="git branch"
+alias gco="git checkout"
+alias clone="git clone"
+alias ga="git add"
+alias gcob="git checkout -b"
 ##############Alias End#############
 #
 ##########Dirstack##############

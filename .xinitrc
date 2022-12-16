@@ -11,7 +11,7 @@ xrdb -merge ~/.Xresources
 ###slow gtk application start
 ###https://bbs.archlinux.org/viewtopic.php?id=224787
 ###https://github.com/flatpak/xdg-desktop-portal-gtk/issues/72
-dbus-up/date-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 ####qbittorent and QT5 HiDPI fix
 #export QT_FONT_DPI = 96 vym
 ######
@@ -36,7 +36,7 @@ picom &
 #cbatticon &
 xfce4-clipman &
 #blueman-applet &
-thunar --daemon &
+#thunar --daemon &
 #riseup-vpn &
 #buckle -g 45 &
 #keepassxc &
@@ -51,7 +51,7 @@ thunar --daemon &
 #kdeconnect-indicator &
 #syncthing-gtk -m &
 #telegram-desktop &
-captstatusui -P LBP2900B -e &
+#captstatusui -P LBP2900B -e &
 #playerctld daemon &
 #activity Watch
 #slack &
@@ -60,7 +60,7 @@ captstatusui -P LBP2900B -e &
 #conky | while read -r; do xsetroot -name "$REPLY"; done &
 #wal -R &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-sh /home/migi/.conky/test/conky_slate.sh &
+#sh /home/migi/.conky/test/conky_slate.sh &
 exec herbstluftwm
 
 #DWM is set default
