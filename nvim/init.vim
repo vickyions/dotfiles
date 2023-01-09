@@ -11,7 +11,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-set foldmethod=manual
+set foldmethod=indent
 set foldnestmax=2
 set nofoldenable
 set foldlevel=2
@@ -21,7 +21,7 @@ set number
 "set relativenumber
 
 set laststatus=2
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %P
+"set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %P
 
 set swapfile
 set directory=$HOME/.vim/swp//
@@ -45,7 +45,7 @@ set title
 set linebreak
 "set spell
 
-set mouse=
+set mouse=a
 set scrolloff=8
 set colorcolumn=80
 
@@ -61,15 +61,20 @@ let g:polyglot_disabled = ['ftdetect']
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'raimondi/delimitmate'
-Plug 'luochen1990/rainbow'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-"Plug 'morhetz/gruvbox'
-"Plug 'mattn/emmet-vim'
+"Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'mattn/emmet-vim'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'luochen1990/rainbow'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
@@ -85,22 +90,22 @@ call plug#end()
 "   filetype indent off   " Disable file-type-specific indentation
 "   syntax off            " Disable syntax highlighting
 
-"indentline
-"let g:indentLine_setColors = 'SpecialKey'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-"raindbow brackets
-let g:rainbow_active = 1
-let g:rainbow_load_separately = [
-    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
-    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
-    \ ]
-
-let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
-
+""indentline
+""let g:indentLine_setColors = 'SpecialKey'
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"
+""raindbow brackets
+"let g:rainbow_active = 1
+"let g:rainbow_load_separately = [
+"    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+"    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+"    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+"    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+"    \ ]
+"
+"let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+"let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+"
 "gruvbox treesitter sainnhe/gruvbox
 " For dark version.
         set background=dark
@@ -219,3 +224,135 @@ let g:vim_markdown_conceal_code_blocks = 0
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+"telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+"lua << EOF
+"require('telescope').setup{  defaults = { file_ignore_patterns = { "node_modules" }} }
+"EOF
+
+"treesitter help lua-heredoc
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "javascript", "typescript", "html", "css", "json", "bash" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+
+  -- rainbow /p00f/nvim-ts-rainbow
+  rainbow = {
+    enable = true,
+    disable = { "jsx" }, --list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+
+    }
+}
+
+
+--indent lua 
+vim.opt.termguicolors = true
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
+
+vim.opt.list = true
+--vim.opt.listchars:append "space:⋅"
+--vim.opt.listchars:append "eol:↴"
+
+require("indent_blankline").setup {
+    space_char_blankline = " ",
+    show_current_context = true, --context indent highlighted by treesitter
+    show_current_context_start = true,
+--   char_highlight_list = {
+--       "IndentBlanklineIndent1",
+--       "IndentBlanklineIndent2",
+--       "IndentBlanklineIndent3",
+--       "IndentBlanklineIndent4",
+--       "IndentBlanklineIndent5",
+--       "IndentBlanklineIndent6",
+--   },
+}
+
+
+--web dev icons
+require'nvim-web-devicons'.setup {
+ -- your personnal icons can go here (to override)
+ -- you can specify color or cterm_color instead of specifying both of them
+ -- DevIcon will be appended to `name`
+ override = {
+  zsh = {
+    icon = "",
+    color = "#428850",
+    cterm_color = "65",
+    name = "Zsh"
+  }
+ };
+ -- globally enable different highlight colors per icon (default to true)
+ -- if set to false all icons will have the default icon's color
+ color_icons = true;
+ -- globally enable default icons (default to false)
+ -- will get overriden by `get_icons` option
+ default = true;
+}
+
+
+--lualine
+require('lualine').setup{
+    options = {
+        theme = 'auto'
+    },
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff'},
+        lualine_c = { 'windows'},
+        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'location', {'diagnostics',
+            sources = {'nvim_diagnostic', 'coc'},
+            sections = {'error', 'warn', 'info', 'hint'},
+
+            diagnostic_color = {
+                -- Same values as the general color option can be used here.
+                error = 'DiagnosticError',
+                warn  = 'DiagnosticWarn',
+                info  = 'DiagnosticInfo',
+                hint  = 'DiagnosticHint',
+            },
+            symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'},
+            colored = false,
+            update_in_insert = false,
+            always_visible = false,
+            }
+        }
+    },
+}
+EOF

@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 # The following lines were added by compinstall
 
@@ -20,7 +27,7 @@ zstyle :compinstall filename '/home/migi/.zshrc'
 #zstyle ':completion:*' rehash true
 
 #pure prompt path#####
-fpath+=$HOME/.zsh/pure
+#fpath+=$HOME/.zsh/pure
 # #######
 
 autoload -Uz compinit promptinit
@@ -32,10 +39,10 @@ promptinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 #######
 
-prompt pure
-###pure single line prompt
-prompt_newline='%666v'
-PROMPT=" $PROMPT"
+#prompt pure
+####pure single line prompt
+#prompt_newline='%666v'
+#PROMPT=" $PROMPT"
 ###########
 #
 # End of lines added by compinstall
@@ -56,34 +63,34 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #####
 MOZ_ALLOW_DOWNGRADE=1
 VBOX_USB=usbfs
-######less###
-export LESS=-R
-export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
-export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-#########less for man for coloured output######
-man() {
-		LESS_TERMCAP_md=$'\e[01;31m' \
-			LESS_TERMCAP_me=$'\e[0m' \
-			LESS_TERMCAP_se=$'\e[0m' \
-			LESS_TERMCAP_so=$'\e[01;44;33m' \
-		LESS_TERMCAP_ue=$'\e[0m' \
-		LESS_TERMCAP_us=$'\e[01;32m' \
-		command man "$@"
-	}
-#########
-LS_COLORS=$LS_COLORS:'di=1;35:ln=36:so=32:pi=33:ex=31:bd=34;47:cd=34;43:su=30;41:sg=30;45:tw=30;42:ow=30;43' ; export LS_COLORS
-#########
+#######less###
+#export LESS=-R
+#export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+#export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+#export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+#export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+#export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+#export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+#export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+##########less for man for coloured output######
+#man() {
+		#LESS_TERMCAP_md=$'\e[01;31m' \
+			#LESS_TERMCAP_me=$'\e[0m' \
+			#LESS_TERMCAP_se=$'\e[0m' \
+			#LESS_TERMCAP_so=$'\e[01;44;33m' \
+		#LESS_TERMCAP_ue=$'\e[0m' \
+		#LESS_TERMCAP_us=$'\e[01;32m' \
+		#command man "$@"
+	#}
+##########
+#LS_COLORS=$LS_COLORS:'di=1;35:ln=36:so=32:pi=33:ex=31:bd=34;47:cd=34;43:su=30;41:sg=30;45:tw=30;42:ow=30;43' ; export LS_COLORS
+##########
 
-####Export
-export TERMINAL=alacritty                                                   
-export BROWSER=firefox
-export EDITOR=vim                         
-export QT_QPA_PLATFORMTHEME=qt5ct
+#####Export
+#export TERMINAL=alacritty                                                   
+#export BROWSER=firefox
+#export EDITOR=vim                         
+#export QT_QPA_PLATFORMTHEME=qt5ct
 
 #########Alias
 alias migi_zoro_cluster_mongodb='mongosh "mongodb+srv://zoro.xttamr6.mongodb.net/mydb" --apiVersion 1 --username migi --password $zoro_cluster_pass'
@@ -111,6 +118,9 @@ alias grayscale='sh /home/migi/.config/picom/grayscale.sh'
 alias sys='systemctl'
 alias todo='vim ~/todo'
 alias scratch='vim ~/scratchpad'
+
+##fzf for history
+alias searchhist='cat ~/.histfile | fzf'
 ##markdown to pdf
 alias mdpandoc='pandoc /home/migi/.config/scripts/template.yaml '
 #alias walupdate='sh ${HOME}/.config/scripts/walupdate.sh'
@@ -154,7 +164,7 @@ setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
 #################
 ####Dynamic xterm title
 
-autoload -Uz add-zsh-hook
+#autoload -Uz add-zsh-hook
 
 function xterm_title_precmd () {
 		print -Pn -- '\e]2;%n@%m %~\a'
@@ -176,3 +186,9 @@ setopt histignorespace
 
 eval "$(zoxide init zsh)"
 source /usr/share/nvm/init-nvm.sh
+
+#Powerlevel10k
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

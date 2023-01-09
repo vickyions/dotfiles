@@ -5,10 +5,10 @@ set tabstop=4   " Show existing tab with 4 spaces width
 set shiftwidth=4  " Indent by 4 spaces when auto-indenting
 set expandtab
 
-set foldmethod=manual
-set foldnestmax=2
+set foldmethod=syntax
+"set foldnestmax=2
 set nofoldenable
-set foldlevel=2
+"set foldlevel=2
 
 syntax on     " Enable syntax highlighting
 "filetype indent on " Enable indenting for files

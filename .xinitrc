@@ -17,9 +17,33 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 ######
 #defaults
 export TERM=alacritty
+export TERMINAL=alacritty
 export BROWSER=firefox
 export EDITOR=vim
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+######less###
+export LESS=-R
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+#########less for man for coloured output######
+man() {
+		LESS_TERMCAP_md=$'\e[01;31m' \
+			LESS_TERMCAP_me=$'\e[0m' \
+			LESS_TERMCAP_se=$'\e[0m' \
+			LESS_TERMCAP_so=$'\e[01;44;33m' \
+		LESS_TERMCAP_ue=$'\e[0m' \
+		LESS_TERMCAP_us=$'\e[01;32m' \
+		command man "$@"
+	}
+#########
+LS_COLORS=$LS_COLORS:'di=1;35:ln=36:so=32:pi=33:ex=31:bd=34;47:cd=34;43:su=30;41:sg=30;45:tw=30;42:ow=30;43' ; export LS_COLORS
+#########
 
 
 #Autostart
