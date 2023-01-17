@@ -68,6 +68,7 @@ Plug 'preservim/nerdtree'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'sainnhe/gruvbox-material'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'mattn/emmet-vim'
 "Plug 'sheerun/vim-polyglot'
 "Plug 'luochen1990/rainbow'
@@ -118,6 +119,7 @@ call plug#end()
         " For better performance
         let g:gruvbox_material_better_performance = 1
         colorscheme gruvbox-material
+"        colorscheme catppuccin-frappe " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 "cursor shape only the insert mode is changed to block others are default
 set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor2
