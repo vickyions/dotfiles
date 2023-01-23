@@ -277,6 +277,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 
+--inden-blankline setup
 --indent lua 
 vim.opt.termguicolors = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
