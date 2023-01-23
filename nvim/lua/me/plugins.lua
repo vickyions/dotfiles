@@ -62,6 +62,27 @@ return packer.startup(function(use)
 
     --nvim-comment
     use 'terrortylor/nvim-comment'
+    --context awate comments treesitter aware config in treesitter.lua
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+    --file tree
+    use {
+            'nvim-tree/nvim-tree.lua',
+            requires = {
+                'nvim-tree/nvim-web-devicons', -- optional, for file icons
+            },
+        --    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        }
+
+    --filetype
+    use 'nathom/filetype.nvim'
+
+    --nvim-autopairs
+    --TODO see mapping for nvim-cmp for autopairs when installed
+    use {
+	    "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
