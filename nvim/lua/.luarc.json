@@ -1,0 +1,28 @@
+{
+    "workspace.library": [
+        "/Users/vicky.soni/.config/nvim",
+        "/Users/vicky.soni/.local/share/nvim/site",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/filetype.nvim",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/mason.nvim",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-comment",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/packer.nvim",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+        "/Users/vicky.soni/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+        "/opt/homebrew/Cellar/neovim/0.8.3/share/nvim/runtime",
+        "/opt/homebrew/Cellar/neovim/0.8.3/share/nvim/runtime/pack/dist/opt/matchit",
+        "/opt/homebrew/Cellar/neovim/0.8.3/lib/nvim",
+        "${3rd}/luassert/library"
+    ]
+}

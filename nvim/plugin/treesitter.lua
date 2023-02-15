@@ -1,4 +1,6 @@
-require'nvim-treesitter.configs'.setup {
+local ts = require('nvim-treesitter.configs')
+
+ts.setup {
   ensure_installed = { "c", "javascript", "typescript", "html", "css", "json", "bash", "lua", "python"},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -21,7 +23,7 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-  
+  --
   -- rainbow /p00f/nvim-ts-rainbow
   rainbow = {
     enable = true,
@@ -38,4 +40,3 @@ require'nvim-treesitter.configs'.setup {
         enable = true
     }
 }
-

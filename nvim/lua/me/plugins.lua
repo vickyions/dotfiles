@@ -48,6 +48,25 @@ return packer.startup(function(use)
     --ts-rainbow
     use 'p00f/nvim-ts-rainbow'
 
+    -- todo-comments
+    -- USE TSInstall comment. intead of this below plugin
+    -- https://github.com/stsewd/tree-sitter-comment
+    -- TODO: something needs to be done
+    -- TODO(stsewd): something needs to be done by @stsewd
+
+    -- XXX: fix something else.
+    -- XXX:    extra white spaces.
+
+    -- (NOTE: this works too).
+
+    -- NOTE-BUG (stsewd): tags can be separated by `-`
+    -- NOTE_BUG: or by `_`.
+    -- FIXME(stsewd) or FIXME
+    -- use {
+    -- "folke/todo-comments.nvim",
+    -- requires = "nvim-lua/plenary.nvim",
+    -- }
+
     --telescope
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.x',
@@ -85,10 +104,46 @@ return packer.startup(function(use)
     }
 
 
-    --lsp
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-    use 'neovim/nvim-lspconfig'
+    -- --lsp
+    -- use 'williamboman/mason.nvim'
+    -- use 'williamboman/mason-lspconfig.nvim'
+    -- use 'neovim/nvim-lspconfig'
+    --
+    -- trying out VonHeikemen/lsp-zero.nvim
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},             -- Required
+            {'williamboman/mason.nvim'},           -- Optional
+            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},         -- Required
+            {'hrsh7th/cmp-nvim-lsp'},     -- Required
+            {'hrsh7th/cmp-buffer'},       -- Optional
+            {'hrsh7th/cmp-path'},         -- Optional
+            {'saadparwaiz1/cmp_luasnip'}, -- Optional
+            {'hrsh7th/cmp-nvim-lua'},     -- Optional
+            
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},             -- Required
+            {'rafamadriz/friendly-snippets'}, -- Optional
+        }
+    }
+
+    -- zenMode
+    use {
+        "folke/zen-mode.nvim",
+        config = function ()
+            require("zen-mode").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
