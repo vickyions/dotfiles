@@ -35,6 +35,11 @@ local options = {
     scrolloff = 8,                           -- is one of my fav
     sidescrolloff = 8,
     termguicolors = true,
+    foldmethod = "expr",
+    foldexpr = "nvim_treesitter#foldexpr()",
+    foldenable = false,
+    foldnestmax = 1,
+    foldminlines = 3,
 }
 
 for k, v in pairs(options) do
